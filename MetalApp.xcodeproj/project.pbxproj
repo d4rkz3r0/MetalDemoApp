@@ -1,0 +1,440 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BE16B9DD1F3223B3009F8280 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE16B9DC1F3223B3009F8280 /* AppDelegate.swift */; };
+		BE16B9DF1F3223B3009F8280 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE16B9DE1F3223B3009F8280 /* ViewController.swift */; };
+		BE16B9E21F3223B3009F8280 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE16B9E01F3223B3009F8280 /* Main.storyboard */; };
+		BE16B9E41F3223B3009F8280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE16B9E31F3223B3009F8280 /* Assets.xcassets */; };
+		BE16B9E71F3223B3009F8280 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE16B9E51F3223B3009F8280 /* LaunchScreen.storyboard */; };
+		BE16B9EF1F322DD5009F8280 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE16B9EE1F322DD5009F8280 /* Renderer.swift */; };
+		BE8FE0811F323CDB0076F223 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = BE8FE0801F323CDB0076F223 /* Shaders.metal */; };
+		BEB5385D1F34F5D700BCF942 /* ebayWallpaper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEB5385C1F34F5D700BCF942 /* ebayWallpaper.jpg */; };
+		BEB538611F34F60700BCF942 /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB538601F34F60700BCF942 /* Texturable.swift */; };
+		BEB538651F35037900BCF942 /* MatrixMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB538641F35037900BCF942 /* MatrixMath.swift */; };
+		BEF5C6911F329BA70063221A /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C6901F329BA70063221A /* Node.swift */; };
+		BEF5C6941F329C7D0063221A /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C6931F329C7D0063221A /* Plane.swift */; };
+		BEF5C6961F32A84C0063221A /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C6951F32A84C0063221A /* Scene.swift */; };
+		BEF5C6981F32A8C60063221A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C6971F32A8C60063221A /* GameScene.swift */; };
+		BEF5C69E1F32ADFC0063221A /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C69D1F32ADFC0063221A /* Triangle.swift */; };
+		BEF5C6A31F32B87A0063221A /* VertexTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C6A21F32B87A0063221A /* VertexTypes.swift */; };
+		BEF5C6A51F32C20A0063221A /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C6A41F32C20A0063221A /* Renderable.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BE16B9D91F3223B3009F8280 /* MetalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE16B9DC1F3223B3009F8280 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BE16B9DE1F3223B3009F8280 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BE16B9E11F3223B3009F8280 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BE16B9E31F3223B3009F8280 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BE16B9E61F3223B3009F8280 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BE16B9E81F3223B3009F8280 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE16B9EE1F322DD5009F8280 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		BE8FE0801F323CDB0076F223 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		BEB5385C1F34F5D700BCF942 /* ebayWallpaper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ebayWallpaper.jpg; sourceTree = "<group>"; };
+		BEB538601F34F60700BCF942 /* Texturable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
+		BEB538641F35037900BCF942 /* MatrixMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixMath.swift; sourceTree = "<group>"; };
+		BEF5C6901F329BA70063221A /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		BEF5C6931F329C7D0063221A /* Plane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		BEF5C6951F32A84C0063221A /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		BEF5C6971F32A8C60063221A /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		BEF5C69D1F32ADFC0063221A /* Triangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
+		BEF5C6A21F32B87A0063221A /* VertexTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VertexTypes.swift; sourceTree = "<group>"; };
+		BEF5C6A41F32C20A0063221A /* Renderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BE16B9D61F3223B3009F8280 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE16B9D01F3223B3009F8280 = {
+			isa = PBXGroup;
+			children = (
+				BE16B9DB1F3223B3009F8280 /* MetalApp */,
+				BE16B9DA1F3223B3009F8280 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BE16B9DA1F3223B3009F8280 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE16B9D91F3223B3009F8280 /* MetalApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE16B9DB1F3223B3009F8280 /* MetalApp */ = {
+			isa = PBXGroup;
+			children = (
+				BEB5385E1F34F5E300BCF942 /* Assets */,
+				BEB538631F35028B00BCF942 /* Rendering */,
+				BEF5C69A1F32A92E0063221A /* Nodes */,
+				BEF5C69F1F32B0C20063221A /* App */,
+				BEF5C6A11F32B8610063221A /* Types */,
+				BEF5C6A01F32B0EA0063221A /* Shaders */,
+				BEF5C6991F32A91F0063221A /* Scenes */,
+				BEB5385B1F34F50500BCF942 /* Utils */,
+			);
+			path = MetalApp;
+			sourceTree = "<group>";
+		};
+		BEB5385B1F34F50500BCF942 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BEB538641F35037900BCF942 /* MatrixMath.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		BEB5385E1F34F5E300BCF942 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				BEB5385F1F34F5E800BCF942 /* Images */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		BEB5385F1F34F5E800BCF942 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				BEB5385C1F34F5D700BCF942 /* ebayWallpaper.jpg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		BEB538631F35028B00BCF942 /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				BEB538601F34F60700BCF942 /* Texturable.swift */,
+				BEF5C6A41F32C20A0063221A /* Renderable.swift */,
+				BE16B9EE1F322DD5009F8280 /* Renderer.swift */,
+			);
+			name = Rendering;
+			sourceTree = "<group>";
+		};
+		BEF5C6921F329C720063221A /* Primitives */ = {
+			isa = PBXGroup;
+			children = (
+				BEF5C6931F329C7D0063221A /* Plane.swift */,
+				BEF5C69D1F32ADFC0063221A /* Triangle.swift */,
+			);
+			name = Primitives;
+			sourceTree = "<group>";
+		};
+		BEF5C6991F32A91F0063221A /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				BEF5C6951F32A84C0063221A /* Scene.swift */,
+				BEF5C6971F32A8C60063221A /* GameScene.swift */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		BEF5C69A1F32A92E0063221A /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				BEF5C6901F329BA70063221A /* Node.swift */,
+				BEF5C6921F329C720063221A /* Primitives */,
+			);
+			name = Nodes;
+			sourceTree = "<group>";
+		};
+		BEF5C69F1F32B0C20063221A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BE16B9DC1F3223B3009F8280 /* AppDelegate.swift */,
+				BE16B9DE1F3223B3009F8280 /* ViewController.swift */,
+				BE16B9E01F3223B3009F8280 /* Main.storyboard */,
+				BE16B9E51F3223B3009F8280 /* LaunchScreen.storyboard */,
+				BE16B9E81F3223B3009F8280 /* Info.plist */,
+				BE16B9E31F3223B3009F8280 /* Assets.xcassets */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		BEF5C6A01F32B0EA0063221A /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				BE8FE0801F323CDB0076F223 /* Shaders.metal */,
+			);
+			name = Shaders;
+			sourceTree = "<group>";
+		};
+		BEF5C6A11F32B8610063221A /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				BEF5C6A21F32B87A0063221A /* VertexTypes.swift */,
+			);
+			name = Types;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BE16B9D81F3223B3009F8280 /* MetalApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE16B9EB1F3223B3009F8280 /* Build configuration list for PBXNativeTarget "MetalApp" */;
+			buildPhases = (
+				BE16B9D51F3223B3009F8280 /* Sources */,
+				BE16B9D61F3223B3009F8280 /* Frameworks */,
+				BE16B9D71F3223B3009F8280 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MetalApp;
+			productName = MetalBreakout;
+			productReference = BE16B9D91F3223B3009F8280 /* MetalApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BE16B9D11F3223B3009F8280 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = d4rkz3r0;
+				TargetAttributes = {
+					BE16B9D81F3223B3009F8280 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 9CJ6R2F96D;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = BE16B9D41F3223B3009F8280 /* Build configuration list for PBXProject "MetalApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BE16B9D01F3223B3009F8280;
+			productRefGroup = BE16B9DA1F3223B3009F8280 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BE16B9D81F3223B3009F8280 /* MetalApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE16B9D71F3223B3009F8280 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE16B9E71F3223B3009F8280 /* LaunchScreen.storyboard in Resources */,
+				BEB5385D1F34F5D700BCF942 /* ebayWallpaper.jpg in Resources */,
+				BE16B9E41F3223B3009F8280 /* Assets.xcassets in Resources */,
+				BE16B9E21F3223B3009F8280 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BE16B9D51F3223B3009F8280 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE8FE0811F323CDB0076F223 /* Shaders.metal in Sources */,
+				BEF5C6A31F32B87A0063221A /* VertexTypes.swift in Sources */,
+				BEF5C6911F329BA70063221A /* Node.swift in Sources */,
+				BEF5C6981F32A8C60063221A /* GameScene.swift in Sources */,
+				BEF5C69E1F32ADFC0063221A /* Triangle.swift in Sources */,
+				BEF5C6A51F32C20A0063221A /* Renderable.swift in Sources */,
+				BE16B9DF1F3223B3009F8280 /* ViewController.swift in Sources */,
+				BEB538611F34F60700BCF942 /* Texturable.swift in Sources */,
+				BE16B9EF1F322DD5009F8280 /* Renderer.swift in Sources */,
+				BEF5C6961F32A84C0063221A /* Scene.swift in Sources */,
+				BEF5C6941F329C7D0063221A /* Plane.swift in Sources */,
+				BE16B9DD1F3223B3009F8280 /* AppDelegate.swift in Sources */,
+				BEB538651F35037900BCF942 /* MatrixMath.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BE16B9E01F3223B3009F8280 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE16B9E11F3223B3009F8280 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BE16B9E51F3223B3009F8280 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE16B9E61F3223B3009F8280 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BE16B9E91F3223B3009F8280 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BE16B9EA1F3223B3009F8280 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BE16B9EC1F3223B3009F8280 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9CJ6R2F96D;
+				INFOPLIST_FILE = MetalApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.d4rkz3r0.MetalApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		BE16B9ED1F3223B3009F8280 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9CJ6R2F96D;
+				INFOPLIST_FILE = MetalApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.d4rkz3r0.MetalApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BE16B9D41F3223B3009F8280 /* Build configuration list for PBXProject "MetalApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE16B9E91F3223B3009F8280 /* Debug */,
+				BE16B9EA1F3223B3009F8280 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE16B9EB1F3223B3009F8280 /* Build configuration list for PBXNativeTarget "MetalApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE16B9EC1F3223B3009F8280 /* Debug */,
+				BE16B9ED1F3223B3009F8280 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BE16B9D11F3223B3009F8280 /* Project object */;
+}
