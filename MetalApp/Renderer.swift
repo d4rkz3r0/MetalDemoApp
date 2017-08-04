@@ -1,6 +1,6 @@
 //
 //  Renderer.swift
-//  MetalBreakout
+//  MetalApp
 //
 //  Created by Steve Kerney on 8/2/17.
 //  Copyright © 2017 d4rkz3r0. All rights reserved.
@@ -54,14 +54,14 @@ extension Renderer: MTKViewDelegate
         
         let commandBuffer = commandQueue.makeCommandBuffer();
         
-        //Encode Scene Commands
+        //Start encoding commands
         let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor);
-        commandEncoder.setFragmentSamplerState(bilinearSamplerState, at: 0);
         
+        commandEncoder.setFragmentSamplerState(bilinearSamplerState, at: 0);
         scene?.render(commandEncoder: commandEncoder, deltaTime: getDeltaTime(view));
+        
+        //End encoding and Present via GPU
         commandEncoder.endEncoding();
-
-        //Present via GPU
         commandBuffer.present(drawable);
         commandBuffer.commit();
     }

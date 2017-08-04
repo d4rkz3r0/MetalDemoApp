@@ -1,6 +1,6 @@
 //
 //  Renderable.swift
-//  MetalBreakout
+//  MetalApp
 //
 //  Created by Steve Kerney on 8/2/17.
 //  Copyright © 2017 d4rkz3r0. All rights reserved.
@@ -14,6 +14,10 @@ protocol Renderable
     var vertexShaderName: String { get };
     var fragmentShaderName: String { get };
     var vertexDescriptor: MTLVertexDescriptor { get };
+    
+    var modelConstants: ModelConstants { get set };
+    
+    func doRender(commandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4);
 }
 
 extension Renderable
@@ -38,5 +42,4 @@ extension Renderable
         
         return pipelineState;
     }
-
 }

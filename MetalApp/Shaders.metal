@@ -1,6 +1,6 @@
 //
 //  Shaders.metal
-//  MetalBreakout
+//  MetalApp
 //
 //  Created by Steve Kerney on 8/2/17.
 //  Copyright © 2017 d4rkz3r0. All rights reserved.

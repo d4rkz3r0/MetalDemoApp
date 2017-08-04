@@ -1,6 +1,6 @@
 //
 //  Plane.swift
-//  MetalBreakout
+//  MetalApp
 //
 //  Created by Steve Kerney on 8/2/17.
 //  Copyright © 2017 d4rkz3r0. All rights reserved.
@@ -62,7 +62,6 @@ class Plane: Node
     //Textureable
     var diffuseTexture: MTLTexture?;
     
-    
     //Misc
     var time: Float =  0;
     
@@ -97,44 +96,28 @@ class Plane: Node
         vertexBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<VertexPosColUV>.stride, options: []);
         indexBuffer = device.makeBuffer(bytes: indices, length: indices.count * MemoryLayout<UInt16>.size, options: []);
     }
-    
-        
-    private func calcSineValue(deltaTime: Float) -> Float
-    {
-        time += deltaTime;
-        
-        return abs(sin(time) / 2 + 0.5);
-    }
-    
-    private func calcWorldMatrix(rotationVal: Float)
-    {
-        let translationMatrix = matrix_identity_float4x4;
-        let animatedRotationMatrix = matrix_float4x4(rotationAngle: rotationVal, x: 0, y: 0, z: 1);
-        let scalingMatrix =  matrix_float4x4(scaleX: 0.5, y: 0.5, z: 0.5);
-        
-        modelConstants.modelViewMX = matrix_multiply(translationMatrix, matrix_multiply(animatedRotationMatrix, scalingMatrix));
-    }
-    override func render(commandEncoder: MTLRenderCommandEncoder, deltaTime: Float)
-    {
-        super.render(commandEncoder: commandEncoder, deltaTime: deltaTime);
-        
-        guard let indexBuffer = indexBuffer, let pipelineState = pipelineState else { return; }
-        
-        
-        calcWorldMatrix(rotationVal: calcSineValue(deltaTime: deltaTime));
-        
-        commandEncoder.setRenderPipelineState(pipelineState);
-        commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, at: 0);
-        commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.size, at: 1);
-        commandEncoder.setFragmentTexture(diffuseTexture, at: 0);
-        commandEncoder.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: indexBuffer, indexBufferOffset: 0);
-    }
 }
 
 //Protocol Conformance
 extension Plane: Renderable
 {
+    func doRender(commandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4)
+    {
+        guard let indexBuffer = indexBuffer, let pipelineState = pipelineState else { return; }
+        
+        let aspectRatio = Float(750.0/1334.0);
+        let projectionMatrix = matrix_float4x4(projectionFov: radians(fromDegrees: 65), aspect: aspectRatio, nearZ: 0.1, farZ: 100);
+        
+        modelConstants.modelViewMX = matrix_multiply(projectionMatrix, modelViewMatrix);
+        
+        commandEncoder.setRenderPipelineState(pipelineState);
+        commandEncoder.setFragmentTexture(diffuseTexture, at: 0);
 
+        commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, at: 0);
+        commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.size, at: 1);
+        commandEncoder.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: indexBuffer, indexBufferOffset: 0);
+
+    }
 }
 
 extension Plane: Texturable

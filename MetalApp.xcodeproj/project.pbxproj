@@ -21,7 +21,6 @@
 		BEF5C6941F329C7D0063221A /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C6931F329C7D0063221A /* Plane.swift */; };
 		BEF5C6961F32A84C0063221A /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C6951F32A84C0063221A /* Scene.swift */; };
 		BEF5C6981F32A8C60063221A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C6971F32A8C60063221A /* GameScene.swift */; };
-		BEF5C69E1F32ADFC0063221A /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C69D1F32ADFC0063221A /* Triangle.swift */; };
 		BEF5C6A31F32B87A0063221A /* VertexTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C6A21F32B87A0063221A /* VertexTypes.swift */; };
 		BEF5C6A51F32C20A0063221A /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C6A41F32C20A0063221A /* Renderable.swift */; };
 /* End PBXBuildFile section */
@@ -43,7 +42,6 @@
 		BEF5C6931F329C7D0063221A /* Plane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		BEF5C6951F32A84C0063221A /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		BEF5C6971F32A8C60063221A /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		BEF5C69D1F32ADFC0063221A /* Triangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		BEF5C6A21F32B87A0063221A /* VertexTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VertexTypes.swift; sourceTree = "<group>"; };
 		BEF5C6A41F32C20A0063221A /* Renderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				BEF5C6931F329C7D0063221A /* Plane.swift */,
-				BEF5C69D1F32ADFC0063221A /* Triangle.swift */,
 			);
 			name = Primitives;
 			sourceTree = "<group>";
@@ -258,7 +255,6 @@
 				BEF5C6A31F32B87A0063221A /* VertexTypes.swift in Sources */,
 				BEF5C6911F329BA70063221A /* Node.swift in Sources */,
 				BEF5C6981F32A8C60063221A /* GameScene.swift in Sources */,
-				BEF5C69E1F32ADFC0063221A /* Triangle.swift in Sources */,
 				BEF5C6A51F32C20A0063221A /* Renderable.swift in Sources */,
 				BE16B9DF1F3223B3009F8280 /* ViewController.swift in Sources */,
 				BEB538611F34F60700BCF942 /* Texturable.swift in Sources */,

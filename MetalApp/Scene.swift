@@ -1,6 +1,6 @@
 //
 //  Scene.swift
-//  MetalBreakout
+//  MetalApp
 //
 //  Created by Steve Kerney on 8/2/17.
 //  Copyright © 2017 d4rkz3r0. All rights reserved.
@@ -19,5 +19,20 @@ class Scene: Node
         self.size = size;
         
         super.init();
+    }
+    
+    func update(deltaTime: Float)
+    {
+        
+    }
+    
+    func render(commandEncoder: MTLRenderCommandEncoder, deltaTime: Float)
+    {
+        update(deltaTime: deltaTime);
+        
+        //Camera View Matrix
+        let viewMatrix = matrix_float4x4(translationX: 0, y: 0, z: -4);
+        
+        _ = children.map({ $0.render(commandEncoder: commandEncoder, parentModelViewMatrix: viewMatrix); })
     }
 }
