@@ -11,24 +11,23 @@ import MetalKit
 class GameScene: Scene
 {
     var quad: Plane;
+    var cube: Cube;
     
     override init(device: MTLDevice, size: CGSize)
     {
+        cube = Cube(device: device);
         quad = Plane(device: device, imageName: "ebayWallpaper.jpg");
 
-        let quad2 = Plane(device: device, imageName: "ebayWallpaper.jpg");
-        quad2.worldScale = float3(0.5);
-        quad2.worldPosition.y = 1.5;
-
-        
-        
         super.init(device: device, size: size);
+        addNode(childNode: cube);
         addNode(childNode: quad);
-        quad.addNode(childNode: quad2);
+        
+        quad.worldPosition.z = -3.0;
+        quad.worldScale = float3(3.0);
     }
     
     override func update(deltaTime: Float)
     {
-        quad.worldRotation.y += deltaTime;
+        cube.worldRotation.y += deltaTime;
     }
 }

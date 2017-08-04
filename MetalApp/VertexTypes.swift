@@ -8,11 +8,6 @@
 
 import simd
 
-struct VertexPos
-{
-    var position: float3;
-}
-
 struct VertexPosColUV
 {
     var position: float3;

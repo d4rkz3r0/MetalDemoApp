@@ -15,6 +15,7 @@ class Renderer: NSObject
     let device: MTLDevice
     let commandQueue: MTLCommandQueue
     var bilinearSamplerState: MTLSamplerState?
+    var depthStencilState: MTLDepthStencilState?
     
     //Rendering Objects
     var scene: Scene?;
@@ -27,6 +28,7 @@ class Renderer: NSObject
         super.init();
         
         buildSamplerStates();
+        buildDepthStencilStates();
     }
     
     private func buildSamplerStates()
@@ -35,6 +37,14 @@ class Renderer: NSObject
         samplerStateDescriptor.minFilter = .linear;
         samplerStateDescriptor.magFilter = .linear;
         bilinearSamplerState = device.makeSamplerState(descriptor: samplerStateDescriptor);
+    }
+    
+    private func buildDepthStencilStates()
+    {
+        let depthStencilStateDescriptor = MTLDepthStencilDescriptor();
+        depthStencilStateDescriptor.isDepthWriteEnabled = true;
+        depthStencilStateDescriptor.depthCompareFunction = .less;
+        depthStencilState = device.makeDepthStencilState(descriptor: depthStencilStateDescriptor);
     }
     
     func getDeltaTime(_ view: MTKView) -> Float { return (1 / Float(view.preferredFramesPerSecond));}
@@ -48,7 +58,8 @@ extension Renderer: MTKViewDelegate
     {
         guard let drawable = view.currentDrawable,
               let renderPassDescriptor = view.currentRenderPassDescriptor,
-              let bilinearSamplerState = bilinearSamplerState
+              let bilinearSamplerState = bilinearSamplerState,
+              let defaultDepthStencilState = depthStencilState
             else { print("One or more required Items not initialized"); return; }
         
         
@@ -58,6 +69,7 @@ extension Renderer: MTKViewDelegate
         let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor);
         
         commandEncoder.setFragmentSamplerState(bilinearSamplerState, at: 0);
+        commandEncoder.setDepthStencilState(defaultDepthStencilState);
         scene?.render(commandEncoder: commandEncoder, deltaTime: getDeltaTime(view));
         
         //End encoding and Present via GPU
