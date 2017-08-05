@@ -18,12 +18,13 @@
 		BEB538611F34F60700BCF942 /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB538601F34F60700BCF942 /* Texturable.swift */; };
 		BEB538651F35037900BCF942 /* MatrixMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB538641F35037900BCF942 /* MatrixMath.swift */; };
 		BEB75A4C1F356EFD001A6C3C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB75A4B1F356EFD001A6C3C /* Model.swift */; };
-		BEB75A511F357844001A6C3C /* ebayLogo.mtl in Resources */ = {isa = PBXBuildFile; fileRef = BEB75A501F357844001A6C3C /* ebayLogo.mtl */; };
 		BEB75A571F357A95001A6C3C /* ebayLogo.obj in Resources */ = {isa = PBXBuildFile; fileRef = BEB75A561F357A95001A6C3C /* ebayLogo.obj */; };
 		BEB75A591F357BA2001A6C3C /* xWing.obj in Resources */ = {isa = PBXBuildFile; fileRef = BEB75A581F357BA2001A6C3C /* xWing.obj */; };
 		BEB75A5D1F357DBC001A6C3C /* xWing_EM.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEB75A5A1F357DBC001A6C3C /* xWing_EM.jpg */; };
 		BEB75A5E1F357DBC001A6C3C /* xWing_SP.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEB75A5B1F357DBC001A6C3C /* xWing_SP.jpg */; };
 		BEB75A5F1F357DBC001A6C3C /* xWing_D.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEB75A5C1F357DBC001A6C3C /* xWing_D.jpg */; };
+		BEB75A611F3583E4001A6C3C /* iPhone.obj in Resources */ = {isa = PBXBuildFile; fileRef = BEB75A601F3583E4001A6C3C /* iPhone.obj */; };
+		BEB75A631F3583F1001A6C3C /* iPhone_D.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEB75A621F3583F1001A6C3C /* iPhone_D.jpg */; };
 		BEF34C981F353654005A1494 /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF34C971F353654005A1494 /* Primitive.swift */; };
 		BEF34C9A1F353B9F005A1494 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF34C991F353B9F005A1494 /* Cube.swift */; };
 		BEF34C9C1F355494005A1494 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF34C9B1F355494005A1494 /* Camera.swift */; };
@@ -49,12 +50,13 @@
 		BEB538601F34F60700BCF942 /* Texturable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
 		BEB538641F35037900BCF942 /* MatrixMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixMath.swift; sourceTree = "<group>"; };
 		BEB75A4B1F356EFD001A6C3C /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		BEB75A501F357844001A6C3C /* ebayLogo.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ebayLogo.mtl; sourceTree = "<group>"; };
 		BEB75A561F357A95001A6C3C /* ebayLogo.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ebayLogo.obj; sourceTree = "<group>"; };
 		BEB75A581F357BA2001A6C3C /* xWing.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xWing.obj; sourceTree = "<group>"; };
 		BEB75A5A1F357DBC001A6C3C /* xWing_EM.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xWing_EM.jpg; sourceTree = "<group>"; };
 		BEB75A5B1F357DBC001A6C3C /* xWing_SP.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xWing_SP.jpg; sourceTree = "<group>"; };
 		BEB75A5C1F357DBC001A6C3C /* xWing_D.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xWing_D.jpg; sourceTree = "<group>"; };
+		BEB75A601F3583E4001A6C3C /* iPhone.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iPhone.obj; sourceTree = "<group>"; };
+		BEB75A621F3583F1001A6C3C /* iPhone_D.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhone_D.jpg; sourceTree = "<group>"; };
 		BEF34C971F353654005A1494 /* Primitive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Primitive.swift; sourceTree = "<group>"; };
 		BEF34C991F353B9F005A1494 /* Cube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		BEF34C9B1F355494005A1494 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -146,7 +148,8 @@
 		BEB75A4D1F35781D001A6C3C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BEB75A501F357844001A6C3C /* ebayLogo.mtl */,
+				BEB75A601F3583E4001A6C3C /* iPhone.obj */,
+				BEB75A621F3583F1001A6C3C /* iPhone_D.jpg */,
 				BEB75A561F357A95001A6C3C /* ebayLogo.obj */,
 				BEB75A581F357BA2001A6C3C /* xWing.obj */,
 				BEB75A5A1F357DBC001A6C3C /* xWing_EM.jpg */,
@@ -275,7 +278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEB75A511F357844001A6C3C /* ebayLogo.mtl in Resources */,
+				BEB75A631F3583F1001A6C3C /* iPhone_D.jpg in Resources */,
 				BEB75A5D1F357DBC001A6C3C /* xWing_EM.jpg in Resources */,
 				BEB75A571F357A95001A6C3C /* ebayLogo.obj in Resources */,
 				BE16B9E71F3223B3009F8280 /* LaunchScreen.storyboard in Resources */,
@@ -285,6 +288,7 @@
 				BEB75A5E1F357DBC001A6C3C /* xWing_SP.jpg in Resources */,
 				BE16B9E41F3223B3009F8280 /* Assets.xcassets in Resources */,
 				BE16B9E21F3223B3009F8280 /* Main.storyboard in Resources */,
+				BEB75A611F3583E4001A6C3C /* iPhone.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

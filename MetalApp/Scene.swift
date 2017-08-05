@@ -30,7 +30,8 @@ class Scene: Node
     func initCamera()
     {
         camera.aspectRatio = Float(size.width / size.height);
-        camera.worldPosition.z = -6.0;
+        camera.worldPosition.y = -0.25;
+        camera.worldPosition.z = -3.0;
         addNode(childNode: camera);
     }
     

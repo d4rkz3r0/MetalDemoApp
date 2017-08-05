@@ -34,6 +34,10 @@ class Node
         return matrix;
     }
     
+    //Additional Color Info
+    var materialColor = float4(1.0);
+    
+    
     
     func addNode(childNode: Node)
     {

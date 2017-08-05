@@ -11,23 +11,20 @@ import MetalKit
 class GameScene: Scene
 {
     //Models
-    let xWing: Model;
+    let iPhone: Model;
     
     override init(device: MTLDevice, size: CGSize)
     {
-        xWing = Model(device: device, modelName: "xWing");
-        xWing.worldScale = float3(0.0025);
-        
+        iPhone = Model(device: device, modelName: "iPhone");
+        iPhone.worldScale = float3(0.1);
         
         super.init(device: device, size: size);
         
-        
-        addNode(childNode: xWing);
-        camera.worldPosition.z = -6.0;
+        addNode(childNode: iPhone);
     }
     
     override func update(deltaTime: Float)
     {
-        xWing.worldRotation.y += deltaTime;
+        iPhone.worldRotation.y += deltaTime;
     }
 }

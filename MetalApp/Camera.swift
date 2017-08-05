@@ -10,7 +10,7 @@ import MetalKit
 
 class Camera: Node
 {
-    var FoV: Float = 65.0;
+    var FoV: Float = 90.0;
     var FoVRadians: Float { return radians(fromDegrees: FoV); }
     var aspectRatio: Float  = 1.0;
     var nearZDist: Float = 0.1;

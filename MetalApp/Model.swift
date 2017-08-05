@@ -136,8 +136,11 @@ extension Model: Renderable
 {
     func doRender(commandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4)
     {
+        //MVP + Material Color Constant Buffer
         modelConstants.modelViewMX = modelViewMatrix;
+        modelConstants.materialColor = materialColor;
         commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, at: 1);
+        
         
         if diffuseTexture != nil
         {
