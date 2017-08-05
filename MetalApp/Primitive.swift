@@ -84,10 +84,8 @@ class Primitive: Node
         pipelineState = buildPipelineState(device: device);
     }
     
-    func buildVertices()
-    {
-        
-    }
+    //Override this function in subclasses...
+    func buildVertices() { }
     
     private func buildBuffers(device: MTLDevice)
     {
@@ -103,17 +101,15 @@ extension Primitive: Renderable
     {
         guard let indexBuffer = indexBuffer, let pipelineState = pipelineState else { return; }
         
-        let aspectRatio = Float(750.0/1334.0);
-        let projectionMatrix = matrix_float4x4(projectionFov: radians(fromDegrees: 65), aspect: aspectRatio, nearZ: 0.1, farZ: 100);
-        
-        modelConstants.modelViewMX = matrix_multiply(projectionMatrix, modelViewMatrix);
-        
         commandEncoder.setRenderPipelineState(pipelineState);
         commandEncoder.setFragmentTexture(diffuseTexture, at: 0);
         commandEncoder.setFrontFacing(.counterClockwise);
         commandEncoder.setCullMode(.back);
         commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, at: 0);
+        
+        modelConstants.modelViewMX = modelViewMatrix;
         commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.size, at: 1);
+        
         commandEncoder.drawIndexedPrimitives(type: .triangle, indexCount: indices.count, indexType: .uint16, indexBuffer: indexBuffer, indexBufferOffset: 0);
         
     }

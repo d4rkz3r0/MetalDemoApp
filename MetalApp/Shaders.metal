@@ -10,9 +10,14 @@
 using namespace metal;
 
 //Constant Buffers
-struct ModelConstants
+struct ModelConstants // Register - 1
 {
     float4x4 modelViewMatrix;
+};
+
+struct SceneConstants // Register - 2
+{
+    float4x4 projectionMatrix;
 };
 
 //Vertex Types
@@ -31,10 +36,14 @@ struct VertexPosColUVOut
 };
 
 //Vertex Shader -> Diffuse Info Vertex Shader
-vertex VertexPosColUVOut diffuse_vertex_shader(const VertexPosColUVIn vertexIn [[ stage_in ]], constant ModelConstants& modelConstants [[ buffer(1) ]])
+vertex VertexPosColUVOut diffuse_vertex_shader(const VertexPosColUVIn vertexIn [[ stage_in ]],
+                                               constant ModelConstants& modelConstants [[ buffer(1) ]],
+                                               constant SceneConstants& sceneConstants [[ buffer(2) ]])
 {
     VertexPosColUVOut vertexOut;
-    vertexOut.position = modelConstants.modelViewMatrix *  vertexIn.position;
+    
+    float4x4 modelViewProjectionMatrix = sceneConstants.projectionMatrix * modelConstants.modelViewMatrix;
+    vertexOut.position = modelViewProjectionMatrix *  vertexIn.position;
     vertexOut.color = vertexIn.color;
     vertexOut.uv = vertexIn.uv;
     

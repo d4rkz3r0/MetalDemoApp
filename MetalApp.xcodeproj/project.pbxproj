@@ -19,6 +19,7 @@
 		BEB538651F35037900BCF942 /* MatrixMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB538641F35037900BCF942 /* MatrixMath.swift */; };
 		BEF34C981F353654005A1494 /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF34C971F353654005A1494 /* Primitive.swift */; };
 		BEF34C9A1F353B9F005A1494 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF34C991F353B9F005A1494 /* Cube.swift */; };
+		BEF34C9C1F355494005A1494 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF34C9B1F355494005A1494 /* Camera.swift */; };
 		BEF5C6911F329BA70063221A /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C6901F329BA70063221A /* Node.swift */; };
 		BEF5C6941F329C7D0063221A /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C6931F329C7D0063221A /* Plane.swift */; };
 		BEF5C6961F32A84C0063221A /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C6951F32A84C0063221A /* Scene.swift */; };
@@ -42,6 +43,7 @@
 		BEB538641F35037900BCF942 /* MatrixMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixMath.swift; sourceTree = "<group>"; };
 		BEF34C971F353654005A1494 /* Primitive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Primitive.swift; sourceTree = "<group>"; };
 		BEF34C991F353B9F005A1494 /* Cube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
+		BEF34C9B1F355494005A1494 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		BEF5C6901F329BA70063221A /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		BEF5C6931F329C7D0063221A /* Plane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		BEF5C6951F32A84C0063221A /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				BEF5C6901F329BA70063221A /* Node.swift */,
+				BEF34C9B1F355494005A1494 /* Camera.swift */,
 				BEF5C6921F329C720063221A /* Primitives */,
 			);
 			name = Nodes;
@@ -268,6 +271,7 @@
 				BEF5C6961F32A84C0063221A /* Scene.swift in Sources */,
 				BEF34C981F353654005A1494 /* Primitive.swift in Sources */,
 				BEF5C6941F329C7D0063221A /* Plane.swift in Sources */,
+				BEF34C9C1F355494005A1494 /* Camera.swift in Sources */,
 				BE16B9DD1F3223B3009F8280 /* AppDelegate.swift in Sources */,
 				BEF34C9A1F353B9F005A1494 /* Cube.swift in Sources */,
 				BEB538651F35037900BCF942 /* MatrixMath.swift in Sources */,

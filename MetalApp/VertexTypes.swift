@@ -19,3 +19,8 @@ struct ModelConstants
 {
     var modelViewMX = matrix_identity_float4x4;
 }
+
+struct SceneConstants
+{
+    var projectionMatrix = matrix_identity_float4x4;
+}

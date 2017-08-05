@@ -24,6 +24,12 @@ class GameScene: Scene
         
         quad.worldPosition.z = -3.0;
         quad.worldScale = float3(3.0);
+        
+        camera.worldPosition.x = 1.0;
+        camera.worldPosition.y = -1.0;
+        camera.worldPosition.z = -6.0;
+        camera.worldRotation.x = radians(fromDegrees: -45.0);
+        camera.worldRotation.y = radians(fromDegrees: -45.0);
     }
     
     override func update(deltaTime: Float)

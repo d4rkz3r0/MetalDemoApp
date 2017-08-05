@@ -10,7 +10,6 @@ import MetalKit
 
 class Plane: Primitive
 {
-    
     override func buildVertices()
     {
         vertices =
