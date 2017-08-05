@@ -60,7 +60,7 @@ extension Renderer: MTKViewDelegate
               let renderPassDescriptor = view.currentRenderPassDescriptor,
               let bilinearSamplerState = bilinearSamplerState,
               let defaultDepthStencilState = depthStencilState
-            else { print("One or more required Items not initialized"); return; }
+            else { print("One or more required Items not initialized."); return; }
         
         
         let commandBuffer = commandQueue.makeCommandBuffer();

@@ -31,7 +31,7 @@ class Scene: Node
     {
         camera.aspectRatio = Float(size.width / size.height);
         camera.worldPosition.y = -0.25;
-        camera.worldPosition.z = -3.0;
+        camera.worldPosition.z = -7.0;
         addNode(childNode: camera);
     }
     

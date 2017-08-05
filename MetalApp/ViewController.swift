@@ -48,7 +48,7 @@ class ViewController: UIViewController
         renderer = Renderer(device: vDevice);
         
         //Set Scene
-        renderer?.scene = GameScene(device: vDevice, size: view.bounds.size);
+        renderer?.scene = InstancedScene(device: vDevice, size: view.bounds.size);
         metalView.delegate = renderer;
     }
 }

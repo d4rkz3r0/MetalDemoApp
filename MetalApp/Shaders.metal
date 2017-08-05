@@ -53,6 +53,27 @@ vertex VertexPosColUVOut diffuse_vertex_shader(const VertexPosColUVIn vertexIn [
     return vertexOut;
 }
 
+//Vertex Shader -> Instanced Model with Diffuse Info Vertex Shader
+vertex VertexPosColUVOut instanced_diffuse_vertex_shader(const VertexPosColUVIn vertexIn [[ stage_in ]],
+                                               constant ModelConstants* modelInstanceData [[ buffer(1) ]],
+                                               constant SceneConstants& sceneConstants [[ buffer(2) ]],
+                                               uint instanceID [[ instance_id ]])
+{
+    VertexPosColUVOut vertexOut;
+    
+    ModelConstants instanceModelData = modelInstanceData[instanceID];
+    
+    float4x4 modelViewProjectionMatrix = sceneConstants.projectionMatrix * instanceModelData.modelViewMatrix;
+    vertexOut.position = modelViewProjectionMatrix *  vertexIn.position;
+    vertexOut.color = vertexIn.color;
+    vertexOut.uv = vertexIn.uv;
+    vertexOut.materialColor = instanceModelData.materialColor;
+    
+    return vertexOut;
+}
+
+
+
 //Fragment Shader -> Sampled Diffuse Texture Color + Model Tint Color Fragment Shader
 fragment half4 diffuse_fragment_shader(VertexPosColUVOut vertexIn [[ stage_in ]], sampler sampler2D [[ sampler(0) ]], texture2d<float> diffuseTexture [[ texture(0) ]])
 {
@@ -62,6 +83,8 @@ fragment half4 diffuse_fragment_shader(VertexPosColUVOut vertexIn [[ stage_in ]]
     //Model Color
     float4 diffuseColor = diffuseTextureColor * vertexIn.materialColor;
     
+    if (diffuseColor.a == 0.0) { discard_fragment(); }
+
     //Final Color
     return half4(diffuseColor.r, diffuseColor.g, diffuseColor.b, 1);
 }
