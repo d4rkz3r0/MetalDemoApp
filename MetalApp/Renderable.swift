@@ -32,6 +32,7 @@ extension Renderable
         pipelineDescriptor.vertexFunction = vertexShader;
         pipelineDescriptor.fragmentFunction = fragmentShader;
         pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm;
+        pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float;
         pipelineDescriptor.vertexDescriptor = vertexDescriptor;
         
         let pipelineState: MTLRenderPipelineState;

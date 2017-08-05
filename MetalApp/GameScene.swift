@@ -10,30 +10,24 @@ import MetalKit
 
 class GameScene: Scene
 {
-    var quad: Plane;
-    var cube: Cube;
+    //Models
+    let xWing: Model;
     
     override init(device: MTLDevice, size: CGSize)
     {
-        cube = Cube(device: device);
-        quad = Plane(device: device, imageName: "ebayWallpaper.jpg");
-
+        xWing = Model(device: device, modelName: "xWing");
+        xWing.worldScale = float3(0.0025);
+        
+        
         super.init(device: device, size: size);
-        addNode(childNode: cube);
-        addNode(childNode: quad);
         
-        quad.worldPosition.z = -3.0;
-        quad.worldScale = float3(3.0);
         
-        camera.worldPosition.x = 1.0;
-        camera.worldPosition.y = -1.0;
+        addNode(childNode: xWing);
         camera.worldPosition.z = -6.0;
-        camera.worldRotation.x = radians(fromDegrees: -45.0);
-        camera.worldRotation.y = radians(fromDegrees: -45.0);
     }
     
     override func update(deltaTime: Float)
     {
-        cube.worldRotation.y += deltaTime;
+        xWing.worldRotation.y += deltaTime;
     }
 }

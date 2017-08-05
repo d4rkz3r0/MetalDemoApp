@@ -38,6 +38,7 @@ class ViewController: UIViewController
     func initMetal()
     {
         metalView.clearColor = ClearColors.red;
+        metalView.depthStencilPixelFormat = .depth32Float
         
         //Get Reference to Device
         metalView.device = MTLCreateSystemDefaultDevice();
