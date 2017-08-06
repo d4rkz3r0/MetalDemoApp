@@ -26,7 +26,7 @@ class Node
         //Rotation
         matrix = matrix.rotatedBy(rotationAngle: worldRotation.x, x: 1, y: 0, z: 0);
         matrix = matrix.rotatedBy(rotationAngle: worldRotation.y, x: 0, y: 1, z: 0);
-        matrix = matrix.rotatedBy(rotationAngle: worldRotation.z, x: 0, y: 0, z: 01);
+        matrix = matrix.rotatedBy(rotationAngle: worldRotation.z, x: 0, y: 0, z: 0);
         
         //Scaling
         matrix = matrix.scaledBy(x: worldScale.x, y: worldScale.y, z: worldScale.z);
@@ -34,9 +34,10 @@ class Node
         return matrix;
     }
     
-    //Additional Color Info
+    //Material Info
     var materialColor = float4(1.0);
-    
+    var materialSpecularIntensity: Float = 1.0;
+    var materialShininess: Float = 1.0;
     
     
     func addNode(childNode: Node)

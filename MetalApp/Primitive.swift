@@ -11,7 +11,7 @@ import MetalKit
 class Primitive: Node
 {
     //Model Data
-    var vertices: [VertexPosColUV] = [];
+    var vertices: [Vertex] = [];
     var indices: [UInt16] = [];
     
     //Model Transformation Data
@@ -43,7 +43,7 @@ class Primitive: Node
         vertexDescriptor.attributes[2].offset = MemoryLayout<float3>.stride + MemoryLayout<float4>.stride;
         vertexDescriptor.attributes[2].bufferIndex = 0;
         
-        vertexDescriptor.layouts[0].stride = MemoryLayout<VertexPosColUV>.stride;
+        vertexDescriptor.layouts[0].stride = MemoryLayout<Vertex>.stride;
         
         return vertexDescriptor;
     }
@@ -89,7 +89,7 @@ class Primitive: Node
     
     private func buildBuffers(device: MTLDevice)
     {
-        vertexBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<VertexPosColUV>.stride, options: []);
+        vertexBuffer = device.makeBuffer(bytes: vertices, length: vertices.count * MemoryLayout<Vertex>.stride, options: []);
         indexBuffer = device.makeBuffer(bytes: indices, length: indices.count * MemoryLayout<UInt16>.size, options: []);
     }
 }

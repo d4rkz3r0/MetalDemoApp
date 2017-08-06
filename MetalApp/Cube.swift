@@ -14,14 +14,14 @@ class Cube: Primitive
     {
         vertices =
         [
-            VertexPosColUV(position: float3(-1, 1, 1),  color: float4(1, 0, 0, 1), uv: float2(0, 0)),
-            VertexPosColUV(position: float3(-1, -1, 1), color: float4(0, 1, 0, 1), uv: float2(0, 1)),
-            VertexPosColUV(position: float3(1, -1, 1),  color: float4(0, 0, 1, 1), uv: float2(1, 1)),
-            VertexPosColUV(position: float3(1, 1, 1),   color: float4(1, 0, 1, 1), uv: float2(1, 0)),
-            VertexPosColUV(position: float3(-1, 1, -1), color: float4(0, 0, 1, 1), uv: float2(1, 1)),
-            VertexPosColUV(position: float3(-1, -1, -1),color: float4(0, 1, 0, 1), uv: float2(0, 1)),
-            VertexPosColUV(position: float3(1, -1, -1), color: float4(1, 0, 0, 1), uv: float2(0, 0)),
-            VertexPosColUV(position: float3(1, 1, -1),  color: float4(1, 0, 1, 1), uv: float2(1, 0))
+            Vertex(position: float3(-1, 1, 1),  color: float4(1, 0, 0, 1), uv: float2(0, 0)),
+            Vertex(position: float3(-1, -1, 1), color: float4(0, 1, 0, 1), uv: float2(0, 1)),
+            Vertex(position: float3(1, -1, 1),  color: float4(0, 0, 1, 1), uv: float2(1, 1)),
+            Vertex(position: float3(1, 1, 1),   color: float4(1, 0, 1, 1), uv: float2(1, 0)),
+            Vertex(position: float3(-1, 1, -1), color: float4(0, 0, 1, 1), uv: float2(1, 1)),
+            Vertex(position: float3(-1, -1, -1),color: float4(0, 1, 0, 1), uv: float2(0, 1)),
+            Vertex(position: float3(1, -1, -1), color: float4(1, 0, 0, 1), uv: float2(0, 0)),
+            Vertex(position: float3(1, 1, -1),  color: float4(1, 0, 1, 1), uv: float2(1, 0))
         ]
         
         indices =

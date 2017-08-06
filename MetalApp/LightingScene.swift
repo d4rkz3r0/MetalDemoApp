@@ -20,26 +20,55 @@ class LightingScene: Scene
     
     override init(device: MTLDevice, size: CGSize)
     {
+        //Init Nodes
         iPhone = Model(device: device, modelName: "iPhone");
-        
         super.init(device: device, size: size);
         
-        //Scene Specific
-        camera.worldPosition.y = -3.0;
-        camera.worldPosition.z = -10.0;
-        
+        //Setup Scene Specific
         iPhone.worldScale = float3(0.75);
+        setCameraOrientation(position: float3(0.0, -3.0, -10.0), xRotation: 0.0, yRotation: 0.0);
+        setLightingInfo(lightDirection: float3(0.0, 0.0, -1.0),
+                        lightColor: float3(1.0, 1.0, 1.0),
+                        ambientIntensity: 0.2,
+                        diffuseIntensity: 0.6,
+                        specularIntensity: 0.4,
+                        shininess: 4.0);
         
+        //Add Nodes to Scene
         addNode(childNode: iPhone);
+    }
+    
+    private func setCameraOrientation(position: float3, xRotation: Float, yRotation: Float)
+    {
+        camera.worldPosition.x = position.x;
+        camera.worldPosition.y = position.y;
+        camera.worldPosition.z = position.z;
         
-        lightingInfo.lightColor = float3(0.0, 0.0, 1.0);
-        lightingInfo.ambientIntensity = 0.5;
+        camera.worldRotation.x = xRotation;
+        camera.worldRotation.y = yRotation;
+    }
+    
+    private func setLightingInfo(lightDirection: float3 = float3(0.0),
+                                 lightColor: float3 = float3(1.0),
+                                 ambientIntensity: Float = 0.2,
+                                 diffuseIntensity: Float = 0.8,
+                                 specularIntensity: Float = 0.2,
+                                 shininess: Float = 2.0)
+    {
+        lightingInfo.lightDirection = lightDirection;
+        lightingInfo.lightColor = lightColor;
+        lightingInfo.ambientIntensity = ambientIntensity;
+        lightingInfo.diffuseIntensity = diffuseIntensity;
+        lightingInfo.specularIntensity = specularIntensity;
+        lightingInfo.shininess = shininess;
     }
     
     override func update(deltaTime: Float)
     {
         
     }
+    
+    
     
     //MARK: Model Touch Interaction
     override func touchesBegan(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?)
@@ -62,5 +91,4 @@ class LightingScene: Scene
         
         previousTouchLocation = currentTouchLocation;
     }
-    
 }

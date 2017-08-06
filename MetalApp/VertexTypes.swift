@@ -8,7 +8,7 @@
 
 import simd
 
-struct VertexPosColUV
+struct Vertex
 {
     var position: float3;
     var color: float4;
@@ -18,7 +18,10 @@ struct VertexPosColUV
 struct ModelConstants
 {
     var modelViewMX = matrix_identity_float4x4;
+    var normalMatrix = matrix_identity_float3x3;
     var materialColor = float4(1.0);
+    var materialSpecularIntensity: Float = 1.0;
+    var materialShininess: Float = 1.0;
 }
 
 struct SceneConstants
@@ -28,6 +31,10 @@ struct SceneConstants
 
 struct LightInfo
 {
+    var lightDirection = float3(0.0);
     var lightColor = float3(1.0);
     var ambientIntensity: Float = 1.0;
+    var diffuseIntensity: Float = 1.0;
+    var specularIntensity: Float = 1.0;
+    var shininess: Float = 8.0;
 }

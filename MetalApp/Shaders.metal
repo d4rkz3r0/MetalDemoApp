@@ -13,7 +13,10 @@ using namespace metal;
 struct ModelConstants // Register - 1
 {
     float4x4 modelViewMatrix;
+    float3x3 normalMatrix;
     float4 materialColor;
+    float specularIntensity = 1.0;
+    float shininess = 1.0;
 };
 
 struct SceneConstants // Register - 2
@@ -23,50 +26,64 @@ struct SceneConstants // Register - 2
 
 struct LightingInfo // Register - 3
 {
+    float3 lightDirection;
     float3 lightColor;
     float ambientIntensity;
+    float diffuseIntensity;
 };
 
 
 //Vertex Types
-struct VertexPosColUVIn
+struct VertexIn
 {
     float4 position [[ attribute(0) ]];
-    float4 color [[ attribute(1) ]];
-    float2 uv [[ attribute(2) ]];
+    float4 color    [[ attribute(1) ]];
+    float2 uv       [[ attribute(2) ]];
+    float3 normal   [[ attribute(3) ]];
 };
 
-struct VertexPosColUVOut
+struct VertexOut
 {
     float4 position [[ position ]];
     float4 color;
     float2 uv;
+    float3 normal;
     float4 materialColor;
+    float specularIntensity;
+    float shininess;
+    float3 eyePosition;
 };
 
 //Vertex Shader -> Diffuse Info Vertex Shader
-vertex VertexPosColUVOut diffuse_vertex_shader(const VertexPosColUVIn vertexIn [[ stage_in ]],
-                                               constant ModelConstants& modelConstants [[ buffer(1) ]],
-                                               constant SceneConstants& sceneConstants [[ buffer(2) ]])
+vertex VertexOut diffuse_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
+                                        constant ModelConstants& modelConstants [[ buffer(1) ]],
+                                        constant SceneConstants& sceneConstants [[ buffer(2) ]])
 {
-    VertexPosColUVOut vertexOut;
-    
+    //From Vertex Buffer
+    VertexOut vertexOut;
+
     float4x4 modelViewProjectionMatrix = sceneConstants.projectionMatrix * modelConstants.modelViewMatrix;
     vertexOut.position = modelViewProjectionMatrix *  vertexIn.position;
     vertexOut.color = vertexIn.color;
     vertexOut.uv = vertexIn.uv;
+    
+    //From Constant Buffers
+    vertexOut.normal = modelConstants.normalMatrix * vertexIn.normal;
     vertexOut.materialColor = modelConstants.materialColor;
+    vertexOut.specularIntensity = modelConstants.specularIntensity;
+    vertexOut.shininess = modelConstants.shininess;
+    vertexOut.eyePosition = (modelConstants.modelViewMatrix * vertexIn.position).xyz;
     
     return vertexOut;
 }
 
 //Vertex Shader -> Instanced Model with Diffuse Info Vertex Shader
-vertex VertexPosColUVOut instanced_diffuse_vertex_shader(const VertexPosColUVIn vertexIn [[ stage_in ]],
-                                               constant ModelConstants* modelInstanceData [[ buffer(1) ]],
-                                               constant SceneConstants& sceneConstants [[ buffer(2) ]],
-                                               uint instanceID [[ instance_id ]])
+vertex VertexOut instanced_diffuse_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
+                                                 constant ModelConstants* modelInstanceData [[ buffer(1) ]],
+                                                 constant SceneConstants& sceneConstants [[ buffer(2) ]],
+                                                 uint instanceID [[ instance_id ]])
 {
-    VertexPosColUVOut vertexOut;
+    VertexOut vertexOut;
     
     ModelConstants instanceModelData = modelInstanceData[instanceID];
     
@@ -80,33 +97,54 @@ vertex VertexPosColUVOut instanced_diffuse_vertex_shader(const VertexPosColUVIn 
 }
 
 //Fragment Shader -> Sampled Diffuse Texture Color + Model Tint Color + Scene Lighting Info Fragment Shader
-fragment half4 lighted_diffuse_fragment_shader(VertexPosColUVOut vertexIn [[ stage_in ]],
+fragment half4 lighted_diffuse_fragment_shader(VertexOut vertexIn [[ stage_in ]],
                                                sampler sampler2D [[ sampler(0) ]],
                                                constant LightingInfo& lightingInfo [[ buffer(3) ]],
                                                texture2d<float> diffuseTexture [[ texture(0) ]])
 {
+    // Init
+    float4 finalColor = float4(0.0, 0.0, 0.0, 0.0);
     //Get Sampled Color
     float4 diffuseTextureColor = diffuseTexture.sample(sampler2D, vertexIn.uv);
     
-    //Add Model Color
-    float4 diffuseColor = diffuseTextureColor * vertexIn.materialColor;
+    //Get Model Tint Color
+    float4 diffuseModelColor = vertexIn.materialColor;
     
-    //Calc Scene Ambient Color
+    //Update Final Color
+    finalColor = diffuseTextureColor * diffuseModelColor;
+    
+    // Calc Lighting Factors
+    //Scene Ambient Color
     float3 sceneAmbientColor = lightingInfo.lightColor * lightingInfo.ambientIntensity;
     
-    //Add Scene Ambient Color
-    float4 finalColor = diffuseColor * float4(sceneAmbientColor, 1.0);
+    //Scene Diffuse Color
+    float3 normal = normalize(vertexIn.normal);
+    float diffuseFactor = saturate(-dot(normal, lightingInfo.lightDirection));
+    float3 sceneDiffuseColor = lightingInfo.lightColor * lightingInfo.diffuseIntensity * diffuseFactor;
     
+    //Scene Specular Color
+    float3 eyePos = normalize(vertexIn.eyePosition);
+    float3 lightReflection = reflect(lightingInfo.lightDirection, normal);
+    float specularFactor = pow(saturate(-dot(lightReflection, eyePos)), vertexIn.shininess);
+    float3 sceneSpecularColor = lightingInfo.lightColor * vertexIn.specularIntensity * specularFactor;
     
+    // Combine Lighting Factors
+    float4 combinedLightingColor = float4((sceneAmbientColor + sceneDiffuseColor + sceneSpecularColor), 1.0);
+    
+    //Update Final Color
+    finalColor = finalColor * combinedLightingColor;
+    
+
+    // Return Fragment Color
     if (finalColor.a == 0.0) { discard_fragment(); }
-    
-    //Final Color
     return half4(finalColor.r, finalColor.g, finalColor.b, 1.0);
 }
 
 
 //Fragment Shader -> Sampled Diffuse Texture Color + Model Tint Color Fragment Shader
-fragment half4 diffuse_fragment_shader(VertexPosColUVOut vertexIn [[ stage_in ]], sampler sampler2D [[ sampler(0) ]], texture2d<float> diffuseTexture [[ texture(0) ]])
+fragment half4 diffuse_fragment_shader(VertexOut vertexIn [[ stage_in ]],
+                                       sampler sampler2D [[ sampler(0) ]],
+                                       texture2d<float> diffuseTexture [[ texture(0) ]])
 {
     //Sampled Color
     float4 diffuseTextureColor = diffuseTexture.sample(sampler2D, vertexIn.uv);
@@ -121,7 +159,7 @@ fragment half4 diffuse_fragment_shader(VertexPosColUVOut vertexIn [[ stage_in ]]
 }
 
 //Fragment Shader -> Interpolated Color Fragment Shader
-fragment half4 interp_fragment_shader(VertexPosColUVOut vertexIn [[ stage_in ]])
+fragment half4 interp_fragment_shader(VertexOut vertexIn [[ stage_in ]])
 {
     return half4(vertexIn.color);
 }

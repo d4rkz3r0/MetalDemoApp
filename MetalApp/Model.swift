@@ -17,7 +17,7 @@ class Model: Node
     var diffuseTexture: MTLTexture?;
     
     //Mesh Data
-    var vertices: [VertexPosColUV] = [];
+    var vertices: [Vertex] = [];
     var indices: [UInt16] = [];
     
     //Model Transformation Data
@@ -136,11 +136,13 @@ extension Model: Renderable
 {
     func doRender(commandEncoder: MTLRenderCommandEncoder, modelViewMatrix: matrix_float4x4)
     {
-        //MVP + Material Color Constant Buffer
+        //MVP + Normals + Material Info Constant Buffer
         modelConstants.modelViewMX = modelViewMatrix;
+        modelConstants.normalMatrix = modelViewMatrix.upperLeft3x3();
         modelConstants.materialColor = materialColor;
+        modelConstants.materialSpecularIntensity = materialShininess;
+        modelConstants.materialShininess = materialShininess;
         commandEncoder.setVertexBytes(&modelConstants, length: MemoryLayout<ModelConstants>.stride, at: 1);
-        
         
         if diffuseTexture != nil
         {
