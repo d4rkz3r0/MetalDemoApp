@@ -21,6 +21,13 @@ struct SceneConstants // Register - 2
     float4x4 projectionMatrix;
 };
 
+struct LightingInfo // Register - 3
+{
+    float3 lightColor;
+    float ambientIntensity;
+};
+
+
 //Vertex Types
 struct VertexPosColUVIn
 {
@@ -72,6 +79,30 @@ vertex VertexPosColUVOut instanced_diffuse_vertex_shader(const VertexPosColUVIn 
     return vertexOut;
 }
 
+//Fragment Shader -> Sampled Diffuse Texture Color + Model Tint Color + Scene Lighting Info Fragment Shader
+fragment half4 lighted_diffuse_fragment_shader(VertexPosColUVOut vertexIn [[ stage_in ]],
+                                               sampler sampler2D [[ sampler(0) ]],
+                                               constant LightingInfo& lightingInfo [[ buffer(3) ]],
+                                               texture2d<float> diffuseTexture [[ texture(0) ]])
+{
+    //Get Sampled Color
+    float4 diffuseTextureColor = diffuseTexture.sample(sampler2D, vertexIn.uv);
+    
+    //Add Model Color
+    float4 diffuseColor = diffuseTextureColor * vertexIn.materialColor;
+    
+    //Calc Scene Ambient Color
+    float3 sceneAmbientColor = lightingInfo.lightColor * lightingInfo.ambientIntensity;
+    
+    //Add Scene Ambient Color
+    float4 finalColor = diffuseColor * float4(sceneAmbientColor, 1.0);
+    
+    
+    if (finalColor.a == 0.0) { discard_fragment(); }
+    
+    //Final Color
+    return half4(finalColor.r, finalColor.g, finalColor.b, 1.0);
+}
 
 
 //Fragment Shader -> Sampled Diffuse Texture Color + Model Tint Color Fragment Shader

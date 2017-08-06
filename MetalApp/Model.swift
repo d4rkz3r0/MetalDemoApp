@@ -33,7 +33,7 @@ class Model: Node
     //Renderable
     var pipelineState: MTLRenderPipelineState!;
     var vertexShaderName: String = "diffuse_vertex_shader";
-    var fragmentShaderName: String = "interp_fragment_shader";
+    var fragmentShaderName: String = "lighted_diffuse_fragment_shader";
     var vertexDescriptor: MTLVertexDescriptor
     {
         let vertexDescriptor = MTLVertexDescriptor();
@@ -78,7 +78,7 @@ class Model: Node
         if let diffuseTexture = setTexture(device: device, imageName: diffuseTextureName)
         {
             self.diffuseTexture = diffuseTexture;
-            fragmentShaderName = "diffuse_fragment_shader";
+            fragmentShaderName = "lighted_diffuse_fragment_shader";
         }
         else
         {
@@ -164,7 +164,6 @@ extension Model: Renderable
                                                      indexBuffer: aSubMesh.indexBuffer.buffer,
                                                      indexBufferOffset: aSubMesh.indexBuffer.offset);
             }
-            
         }
     }
 }

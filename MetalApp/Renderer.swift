@@ -52,7 +52,11 @@ class Renderer: NSObject
 
 extension Renderer: MTKViewDelegate
 {
-    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) { }
+    //View orientation is changed.
+    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize)
+    {
+        scene?.sceneSizeWillChange(to: size);
+    }
     
     func draw(in view: MTKView)
     {

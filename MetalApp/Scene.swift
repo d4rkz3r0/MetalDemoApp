@@ -10,10 +10,15 @@ import MetalKit
 
 class Scene: Node
 {
+    //Metal
     var device: MTLDevice;
+    
+    //View
     var size: CGSize;
     
+    //Base Scene Required Objects
     var camera = Camera();
+    var lightingInfo = LightInfo();
     
     //Scene CB
     var sceneConstants = SceneConstants();
@@ -30,9 +35,13 @@ class Scene: Node
     func initCamera()
     {
         camera.aspectRatio = Float(size.width / size.height);
-        camera.worldPosition.y = -0.25;
-        camera.worldPosition.z = -7.0;
+
         addNode(childNode: camera);
+    }
+    
+    func sceneSizeWillChange(to size: CGSize)
+    {
+        camera.aspectRatio = Float(size.width / size.height);
     }
     
     func update(deltaTime: Float)
@@ -44,9 +53,22 @@ class Scene: Node
     {
         update(deltaTime: deltaTime);
         
+        // Update Scene Constant Buffers
+        //Proj MX
         sceneConstants.projectionMatrix = camera.projectionMatrix;
         commandEncoder.setVertexBytes(&sceneConstants, length: MemoryLayout<SceneConstants>.stride, at: 2);
         
+        //Lighting Info
+        commandEncoder.setFragmentBytes(&lightingInfo, length: MemoryLayout<LightInfo>.stride, at: 3);
+        
+        
+        // Render Scene's Nodes.
         _ = children.map({ $0.render(commandEncoder: commandEncoder, parentModelViewMatrix: camera.viewMatrix); })
     }
+    
+    //MARK: Touch Interaction
+    func touchesBegan(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?) { }
+    func touchesMoved(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?) { }
+    func touchesEnded(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?) { }
+    func touchesCancelled(_ view: UIView, touches: Set<UITouch>, with event: UIEvent?) { }
 }

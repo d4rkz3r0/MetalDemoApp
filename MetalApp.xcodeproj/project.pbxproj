@@ -27,6 +27,7 @@
 		BEB75A5F1F357DBC001A6C3C /* xWing_D.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEB75A5C1F357DBC001A6C3C /* xWing_D.jpg */; };
 		BEB75A611F3583E4001A6C3C /* iPhone.obj in Resources */ = {isa = PBXBuildFile; fileRef = BEB75A601F3583E4001A6C3C /* iPhone.obj */; };
 		BEB75A631F3583F1001A6C3C /* iPhone_D.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEB75A621F3583F1001A6C3C /* iPhone_D.jpg */; };
+		BEB762C81F37977300941915 /* LightingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB762C71F37977300941915 /* LightingScene.swift */; };
 		BEF34C981F353654005A1494 /* Primitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF34C971F353654005A1494 /* Primitive.swift */; };
 		BEF34C9A1F353B9F005A1494 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF34C991F353B9F005A1494 /* Cube.swift */; };
 		BEF34C9C1F355494005A1494 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF34C9B1F355494005A1494 /* Camera.swift */; };
@@ -61,6 +62,7 @@
 		BEB75A5C1F357DBC001A6C3C /* xWing_D.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xWing_D.jpg; sourceTree = "<group>"; };
 		BEB75A601F3583E4001A6C3C /* iPhone.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iPhone.obj; sourceTree = "<group>"; };
 		BEB75A621F3583F1001A6C3C /* iPhone_D.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iPhone_D.jpg; sourceTree = "<group>"; };
+		BEB762C71F37977300941915 /* LightingScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightingScene.swift; sourceTree = "<group>"; };
 		BEF34C971F353654005A1494 /* Primitive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Primitive.swift; sourceTree = "<group>"; };
 		BEF34C991F353B9F005A1494 /* Cube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		BEF34C9B1F355494005A1494 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				BEF5C6951F32A84C0063221A /* Scene.swift */,
 				BEF5C6971F32A8C60063221A /* GameScene.swift */,
 				BE4BD4661F358A8B002752DA /* InstancedScene.swift */,
+				BEB762C71F37977300941915 /* LightingScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE8FE0811F323CDB0076F223 /* Shaders.metal in Sources */,
+				BEB762C81F37977300941915 /* LightingScene.swift in Sources */,
 				BEF5C6A31F32B87A0063221A /* VertexTypes.swift in Sources */,
 				BEF5C6911F329BA70063221A /* Node.swift in Sources */,
 				BEF5C6981F32A8C60063221A /* GameScene.swift in Sources */,

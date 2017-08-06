@@ -25,3 +25,9 @@ struct SceneConstants
 {
     var projectionMatrix = matrix_identity_float4x4;
 }
+
+struct LightInfo
+{
+    var lightColor = float3(1.0);
+    var ambientIntensity: Float = 1.0;
+}

@@ -18,6 +18,9 @@ class InstancedScene: Scene
         
         super.init(device: device, size: size);
         
+        camera.worldPosition.y = -0.25;
+        camera.worldPosition.z = -7.0;
+        
         addNode(childNode: iPhone);
         
         generateRandomTransformations(device: device);
@@ -33,6 +36,7 @@ class InstancedScene: Scene
                 iPhoneInstance.worldScale = float3(Float(arc4random_uniform(3) + 1) / 10);
                 iPhoneInstance.worldPosition.x = Float(arc4random_uniform(5)) - 2;
                 iPhoneInstance.worldPosition.y = Float(arc4random_uniform(7)) - 3;
+                iPhoneInstance.worldPosition.z = Float(arc4random_uniform(5) / 10);
                 iPhone.materialColor = float4(Float(drand48()), Float(drand48()), Float(drand48()), 1.0);
             }
         }
