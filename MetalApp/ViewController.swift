@@ -16,6 +16,7 @@ enum ClearColors
     static let black = MTLClearColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0);
     static let yellow = MTLClearColor(red: 0.0, green: 1.0, blue: 1.0, alpha: 1.0);
     static let red = MTLClearColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0);
+    static let white = MTLClearColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0);
     
 }
 class ViewController: UIViewController
@@ -37,7 +38,7 @@ class ViewController: UIViewController
 
     func initMetal()
     {
-        metalView.clearColor = ClearColors.red;
+        metalView.clearColor = ClearColors.white;
         metalView.depthStencilPixelFormat = .depth32Float
         
         //Get Reference to Device
@@ -48,7 +49,7 @@ class ViewController: UIViewController
         renderer = Renderer(device: vDevice);
         
         //Set Scene
-        renderer?.scene = LightingScene(device: vDevice, size: view.bounds.size);
+        renderer?.scene = FinalScene(device: vDevice, size: view.bounds.size);
         metalView.delegate = renderer;
     }
     

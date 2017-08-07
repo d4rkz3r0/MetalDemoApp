@@ -26,8 +26,8 @@ class Primitive: Node
     
     //Renderable
     var pipelineState: MTLRenderPipelineState!;
-    var vertexShaderName: String = "diffuse_vertex_shader";
-    var fragmentShaderName: String = "interp_fragment_shader";
+    var vertexShaderName: String = "lit_vertex_shader";
+    var fragmentShaderName: String = "default_fragment_shader";
     var vertexDescriptor: MTLVertexDescriptor
     {
         let vertexDescriptor = MTLVertexDescriptor();
@@ -77,7 +77,7 @@ class Primitive: Node
         }
         else
         {
-            fragmentShaderName = "interp_fragment_shader"
+            fragmentShaderName = "default_fragment_shader"
         }
         
         buildBuffers(device: device);

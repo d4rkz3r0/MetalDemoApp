@@ -22,10 +22,8 @@ class InstanceModel: Node
     //Rendereable Conformance
     var pipelineState: MTLRenderPipelineState!;
     var vertexDescriptor: MTLVertexDescriptor;
-    var vertexShaderName: String = "instanced_diffuse_vertex_shader";
+    var vertexShaderName: String = "lit_instanced_vertex_shader";
     var fragmentShaderName: String;
-    
-    
     
     init(device: MTLDevice, modelName: String, numInstances: Int)
     {
@@ -50,8 +48,6 @@ class InstanceModel: Node
             instance.name = "Instance \(i)";
             instances.append(instance);
             instanceConstants.append(ModelConstants());
-        
-        
         }
     }
     
@@ -75,6 +71,9 @@ extension InstanceModel: Renderable
         for instance in instances
         {
             instanceDataPointer.pointee.modelViewMX = matrix_multiply(modelViewMatrix, instance.modelMatrix);
+            instanceDataPointer.pointee.normalMatrix = instance.modelMatrix.upperLeft3x3(); // modelViewMatrix.upperLeft3x3();
+            instanceDataPointer.pointee.materialSpecularIntensity = materialSpecularIntensity;
+            instanceDataPointer.pointee.materialShininess = materialShininess;
             instanceDataPointer.pointee.materialColor = instance.materialColor;
             instanceDataPointer = instanceDataPointer.advanced(by: 1);
         }

@@ -32,7 +32,7 @@ class Model: Node
     
     //Renderable
     var pipelineState: MTLRenderPipelineState!;
-    var vertexShaderName: String = "diffuse_vertex_shader";
+    var vertexShaderName: String = "lit_vertex_shader";
     var fragmentShaderName: String = "lighted_diffuse_fragment_shader";
     var vertexDescriptor: MTLVertexDescriptor
     {
@@ -82,7 +82,7 @@ class Model: Node
         }
         else
         {
-            fragmentShaderName = "interp_fragment_shader"
+            fragmentShaderName = "default_fragment_shader"
         }
 
         

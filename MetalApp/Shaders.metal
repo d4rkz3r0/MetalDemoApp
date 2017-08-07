@@ -54,21 +54,36 @@ struct VertexOut
     float3 eyePosition;
 };
 
-//Vertex Shader -> Diffuse Info Vertex Shader
-vertex VertexOut diffuse_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
+//Vertex Shader -> 2D Textured Elements
+vertex VertexOut ui_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
+                                  constant ModelConstants& modelConstants [[ buffer(1) ]],
+                                  constant SceneConstants& sceneConstants [[ buffer(2) ]])
+{
+    VertexOut vertexOut;
+    float4x4 modelViewProjectionMatrix = sceneConstants.projectionMatrix * modelConstants.modelViewMatrix;
+
+    
+    vertexOut.position = modelViewProjectionMatrix * vertexIn.position;
+    vertexOut.color = vertexIn.color;
+    vertexOut.uv = vertexIn.uv;
+    
+    return vertexOut;
+}
+
+//Vertex Shader -> Normal Model w/ Lighting Vertex Shader
+vertex VertexOut lit_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
                                         constant ModelConstants& modelConstants [[ buffer(1) ]],
                                         constant SceneConstants& sceneConstants [[ buffer(2) ]])
 {
-    //From Vertex Buffer
     VertexOut vertexOut;
 
     float4x4 modelViewProjectionMatrix = sceneConstants.projectionMatrix * modelConstants.modelViewMatrix;
     vertexOut.position = modelViewProjectionMatrix *  vertexIn.position;
     vertexOut.color = vertexIn.color;
     vertexOut.uv = vertexIn.uv;
-    
-    //From Constant Buffers
     vertexOut.normal = modelConstants.normalMatrix * vertexIn.normal;
+    
+    //Lighting
     vertexOut.materialColor = modelConstants.materialColor;
     vertexOut.specularIntensity = modelConstants.specularIntensity;
     vertexOut.shininess = modelConstants.shininess;
@@ -77,14 +92,13 @@ vertex VertexOut diffuse_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
     return vertexOut;
 }
 
-//Vertex Shader -> Instanced Model with Diffuse Info Vertex Shader
-vertex VertexOut instanced_diffuse_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
+//Vertex Shader -> Instanced Model w/ Lighting Vertex Shader
+vertex VertexOut lit_instanced_vertex_shader(const VertexIn vertexIn [[ stage_in ]],
                                                  constant ModelConstants* modelInstanceData [[ buffer(1) ]],
                                                  constant SceneConstants& sceneConstants [[ buffer(2) ]],
                                                  uint instanceID [[ instance_id ]])
 {
     VertexOut vertexOut;
-    
     ModelConstants instanceModelData = modelInstanceData[instanceID];
     
     float4x4 modelViewProjectionMatrix = sceneConstants.projectionMatrix * instanceModelData.modelViewMatrix;
@@ -92,11 +106,15 @@ vertex VertexOut instanced_diffuse_vertex_shader(const VertexIn vertexIn [[ stag
     vertexOut.color = vertexIn.color;
     vertexOut.uv = vertexIn.uv;
     vertexOut.materialColor = instanceModelData.materialColor;
+    vertexOut.normal = instanceModelData.normalMatrix * vertexIn.normal;
+    vertexOut.specularIntensity = instanceModelData.specularIntensity;
+    vertexOut.shininess = instanceModelData.shininess;
+    vertexOut.eyePosition = (instanceModelData.modelViewMatrix * vertexIn.position).xyz;
     
     return vertexOut;
 }
 
-//Fragment Shader -> Sampled Diffuse Texture Color + Model Tint Color + Scene Lighting Info Fragment Shader
+//Fragment Shader -> Diffuse Texture + Model Tint + Lighting Info
 fragment half4 lighted_diffuse_fragment_shader(VertexOut vertexIn [[ stage_in ]],
                                                sampler sampler2D [[ sampler(0) ]],
                                                constant LightingInfo& lightingInfo [[ buffer(3) ]],
@@ -141,7 +159,7 @@ fragment half4 lighted_diffuse_fragment_shader(VertexOut vertexIn [[ stage_in ]]
 }
 
 
-//Fragment Shader -> Sampled Diffuse Texture Color + Model Tint Color Fragment Shader
+//Fragment Shader -> Diffuse Texture + Model Tint (No Lighting)
 fragment half4 diffuse_fragment_shader(VertexOut vertexIn [[ stage_in ]],
                                        sampler sampler2D [[ sampler(0) ]],
                                        texture2d<float> diffuseTexture [[ texture(0) ]])
@@ -158,8 +176,22 @@ fragment half4 diffuse_fragment_shader(VertexOut vertexIn [[ stage_in ]],
     return half4(diffuseColor.r, diffuseColor.g, diffuseColor.b, 1);
 }
 
-//Fragment Shader -> Interpolated Color Fragment Shader
-fragment half4 interp_fragment_shader(VertexOut vertexIn [[ stage_in ]])
+//Fragment Shader -> UI Element
+fragment half4 ui_fragment_shader(VertexOut vertexIn [[ stage_in ]],
+                                       sampler sampler2D [[ sampler(0) ]],
+                                       texture2d<float> diffuseTexture [[ texture(0) ]])
+{
+    //Sampled Color
+    float4 diffuseTextureColor = diffuseTexture.sample(sampler2D, vertexIn.uv);
+    
+    if (diffuseTextureColor.a == 0.0) { discard_fragment(); }
+    
+    //Final Color
+    return half4(diffuseTextureColor.r, diffuseTextureColor.g, diffuseTextureColor.b, 1);
+}
+
+//Fragment Shader -> No Texture
+fragment half4 default_fragment_shader(VertexOut vertexIn [[ stage_in ]])
 {
     return half4(vertexIn.color);
 }
